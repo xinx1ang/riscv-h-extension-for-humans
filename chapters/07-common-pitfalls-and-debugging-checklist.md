@@ -144,3 +144,14 @@ The H extension is hard mainly because it joins multiple moving parts:
 If you debug it one layer at a time,
 using a strict host-versus-guest mental model,
 it becomes much easier to reason about.
+
+## Quick triage checklist
+
+If you need a fast first pass before deep debugging, check these in order:
+
+1. confirm whether the fault happened on guest entry, guest exit, or while the host was emulating something
+2. confirm the current virtualization mode and which CSR set you are inspecting
+3. confirm whether the failure is in stage-1 translation, stage-2 translation, or interrupt injection
+4. confirm whether the observed symptom is the original fault or a later consequence
+
+This simple ordering often cuts down time spent chasing the wrong layer.
